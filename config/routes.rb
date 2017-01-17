@@ -6,4 +6,9 @@ Rails.application.routes.draw do
   delete '/sign-out/:id' => 'users#signout'
   patch '/change-password/:id' => 'users#changepw'
   resources :users, only: [:index, :show]
+
+  # get '/chef_menus/:id', to: 'menu_days#retrieve_menu_day'
+  # get '/chef_menus', to: 'chef_menus#index'
+  get '/menus/:id', to: 'menus#show'
+  get '/menus', to: 'menus#index'
 end
