@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170116192006) do
+ActiveRecord::Schema.define(version: 20170117031350) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -67,10 +67,23 @@ ActiveRecord::Schema.define(version: 20170116192006) do
     t.datetime "updated_at",          null: false
     t.integer  "chef_menu_id"
     t.integer  "user_id"
+    t.integer  "quantity"
   end
 
   add_index "order_tables", ["chef_menu_id"], name: "index_order_tables_on_chef_menu_id", using: :btree
   add_index "order_tables", ["user_id"], name: "index_order_tables_on_user_id", using: :btree
+
+  create_table "orders", force: :cascade do |t|
+    t.string   "destaddress"
+    t.integer  "quantity"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+    t.integer  "user_id"
+    t.integer  "menu_id"
+  end
+
+  add_index "orders", ["menu_id"], name: "index_orders_on_menu_id", using: :btree
+  add_index "orders", ["user_id"], name: "index_orders_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",           null: false
@@ -91,4 +104,6 @@ ActiveRecord::Schema.define(version: 20170116192006) do
   add_foreign_key "menus", "users"
   add_foreign_key "order_tables", "chef_menus"
   add_foreign_key "order_tables", "users"
+  add_foreign_key "orders", "menus"
+  add_foreign_key "orders", "users"
 end

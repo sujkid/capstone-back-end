@@ -11,4 +11,6 @@ Rails.application.routes.draw do
   # get '/chef_menus', to: 'chef_menus#index'
   get '/menus/:id', to: 'menus#show'
   get '/menus', to: 'menus#index'
+
+  post '/menus/:menu_id/orders', to: 'orders#create'
 end

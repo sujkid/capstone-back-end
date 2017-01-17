@@ -1,4 +1,4 @@
-class MenusController < ApplicationController
+class MenusController < OpenReadController
   def index
     @menus = Menu.all
 
