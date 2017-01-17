@@ -1,7 +1,7 @@
 class OrderTablesController < ApplicationController
   def create
-    order_params = params.require(:order_table).permit(:destination_address,
-                                                 :quantity)
+    order_params = params.require(:order_table)
+                         .permit(:destination_address, :quantity)
     @order = current_user.order_tables.build(order_params)
 
     if @order.save
