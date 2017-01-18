@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170117165125) do
+ActiveRecord::Schema.define(version: 20170118205228) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,15 +45,6 @@ ActiveRecord::Schema.define(version: 20170117165125) do
   end
 
   add_index "examples", ["user_id"], name: "index_examples_on_user_id", using: :btree
-
-  create_table "menu_days", force: :cascade do |t|
-    t.date     "date"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
-    t.integer  "chef_menu_id"
-  end
-
-  add_index "menu_days", ["chef_menu_id"], name: "index_menu_days_on_chef_menu_id", using: :btree
 
   create_table "menus", force: :cascade do |t|
     t.string   "foodname"
@@ -108,7 +99,6 @@ ActiveRecord::Schema.define(version: 20170117165125) do
 
   add_foreign_key "chef_menus", "users"
   add_foreign_key "examples", "users"
-  add_foreign_key "menu_days", "chef_menus"
   add_foreign_key "menus", "users"
   add_foreign_key "order_tables", "chef_menus"
   add_foreign_key "order_tables", "users"
