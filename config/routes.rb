@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/menus', to: 'menus#index'
 
   post '/menus/:menu_id/orders', to: 'orders#create'
+  put '/menus/:menu_id', to: 'menus#update'
 
   get '/chefs', to: 'chefs#index'
 
