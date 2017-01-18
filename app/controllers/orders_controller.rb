@@ -11,4 +11,10 @@ class OrdersController < OpenReadController
       render json: @order.errors, status: :unprocessable_entity
     end
   end
+
+  def index
+    @orders = Order.all
+
+    render json: @orders
+  end
 end
