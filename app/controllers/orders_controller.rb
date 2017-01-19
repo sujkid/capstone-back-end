@@ -15,7 +15,7 @@ class OrdersController < OpenReadController
   end
 
   def index
-    @orders = Order.select('orders.quantity, orders.id, menus.foodname, menus.date').joins(:menu).where('orders.user_id =?', current_user.id)
+    @orders = Order.select('orders.quantity, orders.id, menus.foodname, menus.date, menus.price').joins(:menu).where('orders.user_id =?', current_user.id)
 
     render json: @orders, each_serializer: Order::MyOrderSerializer
   end

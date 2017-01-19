@@ -1,3 +1,3 @@
 class MyOrderSerializer < ActiveModel::Serializer
-  attributes :id, :quantity, :foodname, :date
+  attributes :id, :quantity, :foodname, :date, :price
 end
