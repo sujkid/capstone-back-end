@@ -18,4 +18,5 @@ Rails.application.routes.draw do
   get '/chefs', to: 'chefs#index'
 
   get '/orders', to: 'orders#index'
+  delete '/orders/:id', to: 'orders#destroy'
 end
