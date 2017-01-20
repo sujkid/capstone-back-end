@@ -1,4 +1,5 @@
 class OrdersController < OpenReadController
+  before_action :set_order, only: [:destroy]
   def create
     order_params = params.require(:order)
                          .permit(:destaddress, :quantity, :menu_id)
@@ -21,12 +22,16 @@ class OrdersController < OpenReadController
   end
 
   def destroy
-    if current_user
-      @order = Order.find(params[:id])
-
-      @order.destroy
-    end
+    # if current_user
+    @order_destroy.destroy
+    # end
 
     head :no_content
   end
+
+  def set_order
+    @order_destroy = current_user.orders.find(params[:id])
+  end
+
+  private :set_order
 end

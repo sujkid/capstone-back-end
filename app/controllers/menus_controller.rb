@@ -1,4 +1,5 @@
 class MenusController < OpenReadController
+  # before_action :set_menu, only: [:update]
   def index
     @menus = Menu.all
 
@@ -20,4 +21,17 @@ class MenusController < OpenReadController
       head :bad_request
     end
   end
+
+  def set_menu
+    @menu = current_user.menus.find(params[:id])
+  end
+
+  def menu_params
+    params.require(:menu)
+          .permit(:foodname, :fooddescription, :foodurl, :votes, :date, :price, :menu_id)
+          .merge(user_id: current_user.id)
+
+  end
+
+  private :set_menu
 end
