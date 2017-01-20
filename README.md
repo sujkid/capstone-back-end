@@ -1,8 +1,10 @@
 # Lunch Box Back End
 
 The backend for my lunch box app.
+
 <a href="https://github.com/sujkid/capstone-front-end">The front end repo</a>
-<a href="https://guarded-eyrie-26324.herokuapp.com">heroku url</a>
+
+heroku url : https://guarded-eyrie-26324.herokuapp.com
 
 ## Technologies Used
 
