@@ -2,6 +2,8 @@
 
 API="http://localhost:4741"
 URL_PATH="/sign-in"
+EMAIL="suja@boogie.com"
+PASSWORD="boogie"
 curl "${API}${URL_PATH}" \
   --include \
   --request POST \

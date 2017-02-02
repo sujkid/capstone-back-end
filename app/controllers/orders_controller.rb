@@ -4,7 +4,7 @@ class OrdersController < OpenReadController
     order_params = params.require(:order)
                          .permit(:destaddress, :quantity, :menu_id)
                          .merge(user_id: current_user.id)
-    @order = current_user.orders.new(order_params)
+    @order = Order.new(order_params)
 
     if @order.save
       render json: @order, status: :created
