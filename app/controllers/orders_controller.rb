@@ -4,14 +4,12 @@ class OrdersController < OpenReadController
     order_params = params.require(:order)
                          .permit(:destaddress, :quantity, :menu_id)
                          .merge(user_id: current_user.id)
-    if current_user
-      @order = Order.new(order_params)
+    @order = Order.new(order_params)
 
-      if @order.save
-        render json: @order, status: :created
-      else
-        render json: @order.errors, status: :unprocessable_entity
-      end
+    if @order.save
+      render json: @order, status: :created
+    else
+      render json: @order.errors, status: :unprocessable_entity
     end
   end
 
